@@ -15,12 +15,18 @@ github: https://github.com/slacka/WoeUSB'
 
 echo -e "$winimage"
 echo
-sudo apt-get install -y libwxgtk3.0-dev devscripts equivs gdebi-core 
+sudo apt-get install -y \
+   libwxgtk3.0-gtk3-dev \
+   build-essential \
+   checkinstall \
+   devscripts \
+   equivs \
+   gdebi-core \
 git clone https://github.com/slacka/WoeUSB.git && cd WoeUSB
 ./setup-development-environment.bash &&
-sudo gdebi woeusb-build-deps_3.2.12-2-g5e9a3a7_all.deb
+sudo gdebi woeusb-build-deps_3.3.12-2-g5e9a3a7_all.deb
 dpkg-buildpackage -uc -b
-sudo gdebi ../woeusb_3.2.12-2-g5e9a3a7_amd64.deb
+sudo gdebi ../woeusb_3.3.12-2-g5e9a3a7_amd64.deb
 autoreconf --force --install
 ./configure
 make
